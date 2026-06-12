@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "Reservation": {
+      "title": "Reservation",
+      "description": "A table reservation at Terracotta Eatery.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "guests": { "type": "number" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "email", "phone", "date", "time", "guests", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "A takeaway order placed at Terracotta Eatery.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string", "format": "email" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "preparing", "ready", "completed", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["customerName", "customerEmail", "customerPhone", "items", "totalPrice", "status", "createdAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "A customer review left for Terracotta Eatery.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "tags": { "type": "array" },
+        "mealType": { "type": "string" },
+        "ownerResponse": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "rating", "comment", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Collection of customer table reservations."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer takeaway orders."
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of customer reviews to display on the wall of love."
+    }
+  }
+}

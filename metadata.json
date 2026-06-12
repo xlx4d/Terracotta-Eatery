@@ -1,0 +1,6 @@
+{
+  "name": "Terracotta Eatery",
+  "description": "A warm, modern-casual restaurant website for Terracotta Eatery in Plattekloof Village, featuring menu exploration, real-time table reservations, and live takeaway order placement tracker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
